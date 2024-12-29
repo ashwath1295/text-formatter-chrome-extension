@@ -22,7 +22,8 @@ The Chrome extension communicates with a Python Flask backend that handles the t
 
 text-formatter-extension/ ├── extension/ │ ├── manifest.json # Chrome extension metadata │ ├── popup.html # HTML for the extension popup │ ├── popup.js # JavaScript logic for the popup │ ├── styles.css # Styling for the popup UI ├── backend/ │ ├── app.py # Python Flask backend │ ├── requirements.txt # Python dependencies └── README.md # Project documentation
 
-
+yaml
+Copy code
 
 ---
 
@@ -51,11 +52,13 @@ Copy code
 cd backend
 Install Python dependencies:
 
-
+bash
+Copy code
 pip install -r requirements.txt
 Start the Flask server:
 
-
+bash
+Copy code
 python3 app.py
 Verify the server is running:
 
@@ -63,11 +66,13 @@ The Flask server should start on http://127.0.0.1:5000.
 
 You can test it by sending a POST request to http://127.0.0.1:5000/format using tools like Postman or curl:
 
-
+bash
+Copy code
 curl -X POST http://127.0.0.1:5000/format -H "Content-Type: application/json" -d '{"text": "hello, world!", "action": "capitalize"}'
 Expected response:
 
-
+json
+Copy code
 {
   "formatted_text": "Hello, World!"
 }
@@ -91,13 +96,15 @@ API Details (Backend)
 POST /format
 Description: Formats the provided text based on the specified action.
 Request Body:
-
+json
+Copy code
 {
   "text": "hello, world!",
   "action": "capitalize"
 }
 Response Body:
-
+json
+Copy code
 {
   "formatted_text": "Hello, World!"
 }
@@ -111,7 +118,8 @@ Input:
 Text: hello, world!
 Action: capitalize
 Output:
-
+json
+Copy code
 {
   "formatted_text": "Hello, World!"
 }
@@ -120,7 +128,8 @@ Common Issues
 1. Chrome Extension Not Communicating with Backend
 Ensure the Flask server is running at http://127.0.0.1:5000.
 Check the fetch URL in popup.js:
-
+javascript
+Copy code
 const response = await fetch("http://127.0.0.1:5000/format", {
   method: "POST",
   headers: {
@@ -129,12 +138,14 @@ const response = await fetch("http://127.0.0.1:5000/format", {
   body: JSON.stringify({ text: inputText, action }),
 });
 Ensure CORS is properly configured in Flask:
-
+python
+Copy code
 from flask_cors import CORS
 CORS(app, resources={r"/*": {"origins": "*"}})
 2. Flask Server Not Running on 5000 Port
 If the server starts on a different port, update the fetch URL in popup.js to match the new port:
-
+javascript
+Copy code
 const response = await fetch("http://127.0.0.1:<new_port>/format", {
   ...
 });
@@ -148,14 +159,6 @@ Feel free to fork this repository, make changes, and submit a pull request.
 
 License
 This project is licensed under the MIT License.
-
-
-
-
-
-
-
-
 
 
 
