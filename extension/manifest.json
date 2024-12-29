@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Text Formatter",
+    "version": "1.0",
+    "description": "Format text by converting case, removing special characters, and capitalizing words.",
+    "permissions": ["activeTab"],
+    "host_permissions": ["http://localhost:5000/*"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    }
+  }
+  
