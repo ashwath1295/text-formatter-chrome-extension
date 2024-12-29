@@ -36,32 +36,27 @@ This project is a simple Chrome extension that formats user-input text using a P
 Step 2: Backend Setup
 Navigate to the backend directory:
 
-bash
-Copy code
+
 cd backend
 Install the required dependencies:
 
-bash
-Copy code
+
 pip install -r requirements.txt
 Start the Flask server:
 
-bash
-Copy code
+
 python3 app.py
 Verify the server is running at http://127.0.0.1:5000.
 
 Test it by sending a POST request using tools like Postman or curl:
 
-bash
-Copy code
+
 curl -X POST http://127.0.0.1:5000/format \
 -H "Content-Type: application/json" \
 -d '{"text": "hello, world!", "action": "capitalize"}'
 Expected Response:
 
-json
-Copy code
+
 {
   "formatted_text": "Hello, World!"
 }
@@ -83,15 +78,14 @@ API Details (Backend)
 POST /format
 Description: Formats the provided text based on the specified action.
 Request Body:
-json
-Copy code
+
+
 {
   "text": "hello, world!",
   "action": "capitalize"
 }
 Response Body:
-json
-Copy code
+
 {
   "formatted_text": "Hello, World!"
 }
@@ -105,8 +99,7 @@ Input:
 Text: hello, world!
 Action: capitalize
 Output:
-json
-Copy code
+
 {
   "formatted_text": "Hello, World!"
 }
